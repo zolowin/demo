@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paint</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body>
+    <div>
+        <p><b>Clear the Canvas : <button onclick="clearCanvas()" class="btn"><b> Clear</b></button>
+        &ensp;Erase : <button onclick="setColor('white')" class="btn"><b> Erase </b></button></b>
+        </p>
+
+    </div>
+
+    <div>
+        <p><b> Chose color : </b>
+            <button onclick="setColor('black')" id='black'></button>
+            <button onclick="setColor('green')" id='green'></button>
+            <button onclick="setColor('red')" id='red'></button>
+            <button onclick="setColor('blue')" id='blue'></button>
+        </p>
+    </div>
+
+    <div>
+        <p><b> Chose linewidth : </b>
+            <button onclick="setSizeLine('small')" class="btn"><b>Small</b></button>
+            <button onclick="setSizeLine('normal')" class="btn"><b>Normal</b></button>
+            <button onclick="setSizeLine('large')" class="btn"><b>Large</b></button>
+            <button onclick="setSizeLine('huge')" class="btn"><b>Huge</b></button>
+        </p>
+    </div>
+    <img src="" id="mirror">
+    <a href="" class="button" id="btn-download" download="my-file-name.png"><b>Download this image</b></a><br><br>
+
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
