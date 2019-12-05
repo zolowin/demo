@@ -6,10 +6,11 @@ let Draw = function () {
     this.color = '#000000';
     this.lineWidth = 2;
     this.drawing = false;
-    // this.style = 'border : 1px solid #000000;';
     // this.savedMousPotision = { x: 0, y: 0 };
     this.id = 'mycanvas';
+    this.process = [];
 
+    
     let _this = this;
 
     this.setColor = function (color) {
@@ -21,7 +22,6 @@ let Draw = function () {
         this.context = this.canvas.getContext('2d');
         this.canvas.width = this.width;
         this.canvas.height = this.height;
-        // this.canvas.style = this.style;
         this.canvas.id = this.id;
 
         document.body.appendChild(this.canvas);
@@ -39,6 +39,7 @@ let Draw = function () {
         this.context.lineWidth = this.lineWidth;
         this.context.strokeStyle = this.color;
         this.context.stroke();
+        this.process.push(starX,starY,endX,endY);
     }
 
     this.getMousePotision = function (event) {
@@ -81,6 +82,8 @@ let Draw = function () {
         if (this.drawing) {
             let newPos = this.getMousePotision(event);
             this.drawLine(this.x, this.y, newPos.x, newPos.y);
+            // this.process.push((this.x, this.y, newPos.x, newPos.y));
+            console.log(p.process);
             this.x = newPos.x;
             this.y = newPos.y;
         }
@@ -90,8 +93,8 @@ let Draw = function () {
 
 function clearCanvas() {
     let canvas = document.getElementById('mycanvas');
-    ctx = canvas.getContext('2d')
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function setColor(color) {
@@ -146,12 +149,18 @@ button.addEventListener('click', function (e) {
     button.href = dataURL;
 });
 
+function undo() {
+    p.process.pop();
+    console.log("TCL: undo ->  p.process.pop()",  p.process.pop())
+}
+
 let p = new Draw();
 p.init();
 p.drawWhiteBackground();
 p.addMouseDown();
 p.addMouseUp();
 p.addMouseMove();
+
 
 
 
